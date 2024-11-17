@@ -9,7 +9,7 @@ Usage: sn [OPTIONS]
 Options:
   -n, --notify <NOTIFY>        
   -d, --date <DATE>            
-  -c, --clear <CLEAR>          
+  -c, --clear                  
   -i, --important <IMPORTANT>  
   -h, --help                   Print help
   -V, --version                Print version
