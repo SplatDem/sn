@@ -15,7 +15,12 @@ Options:
   -V, --version                Print version
 ```
 
-To install:
+Now you can install it from AUR
+```
+yay -Sy sn
+```
+
+To build from GitHub:
 ```
 git clone https://github.com/SplatDem/sn
 cd sn
