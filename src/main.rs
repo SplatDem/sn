@@ -9,9 +9,11 @@ use std::{
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
+    /// New note
     #[arg(short, long)]
     notify: Option<String>,
 
+    /// Which date
     #[arg(short, long)]
     date: Option<String>,
 
