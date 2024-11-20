@@ -9,11 +9,9 @@ use std::{
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
-    /// New note
     #[arg(short, long)]
-    notify: Option<String>,
+    note: Option<String>,
 
-    /// Which date
     #[arg(short, long)]
     date: Option<String>,
 
@@ -47,24 +45,24 @@ fn main() -> Result<(), Error> {
 fn get_args(data: &str) -> Result<(), Error> {
     let args = Args::parse();
 
-    match (args.notify, args.date, args.important) {
-        (Some(notify), Some(date), None) => {
+    match (args.note, args.date, args.important) {
+        (Some(note), Some(date), None) => {
             let mut file = OpenOptions::new()
                 .write(true)
                 .create(true)
                 .append(true)
                 .open(data)?;
 
-            writeln!(file, "{} -- {}", notify, date)?;
+            writeln!(file, "{} -- {}", note, date)?;
         }
-        (Some(notify), None, None) => {
+        (Some(note), None, None) => {
             let mut file = OpenOptions::new()
                 .write(true)
                 .create(true)
                 .append(true)
                 .open(data)?;
 
-            writeln!(file, "{}", notify)?;
+            writeln!(file, "{}", note)?;
         }
         (None, Some(date), None) => {
             let mut file = OpenOptions::new()
@@ -83,23 +81,23 @@ fn get_args(data: &str) -> Result<(), Error> {
                 println!("{}", line?);
             }
         }
-        (Some(notify), None, Some(important)) => {
+        (Some(note), None, Some(important)) => {
             let mut file = OpenOptions::new()
                 .write(true)
                 .create(true)
                 .append(true)
                 .open(data)?;
 
-            writeln!(file, "<== {} | {} ==>", important, notify)?;
+            writeln!(file, "<== {} | {} ==>", important, note)?;
         }
-        (Some(notify), Some(date), Some(important)) => {
+        (Some(note), Some(date), Some(important)) => {
             let mut file = OpenOptions::new()
                 .write(true)
                 .create(true)
                 .append(true)
                 .open(data)?;
 
-            writeln!(file, "<== {} -- {} | {} ==>", date, notify, important)?;
+            writeln!(file, "<== {} -- {} | {} ==>", date, note, important)?;
         }
         _ => todo!(),
     }
