@@ -7,7 +7,7 @@ Simple utility for notes (because I forget about the kettle too often)
 Usage: sn [OPTIONS]
 
 Options:
-  -n, --notify <NOTIFY>        
+  -n, --note <NOTE>            
   -d, --date <DATE>            
   -c, --clear                  
   -i, --important <IMPORTANT>  
